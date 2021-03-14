@@ -1,0 +1,83 @@
+{
+  "name": "lote-design-system",
+  "description": "A design system helps to build websites rapidly",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "lerna run prepare --parallel",
+    "build": "lerna run prepare --parallel",
+    "bootstrap": "lerna bootstrap --use-workspaces",
+    "release": "lerna publish",
+    "lint": "npm run lint:js && npm run lint:style",
+    "lint:js": "eslint --ignore-path .gitignore 'packages/**/*.js'",
+    "lint:fix": "eslint --ignore-path .gitignore 'packages/**/*.js' --fix",
+    "lint:style": "stylelint 'packages/**/*.js'",
+    "pretest": "yarn lint",
+    "test:watch": "jest --watch",
+    "test": "jest",
+    "storybook:core": "lerna run --stream --scope @lote-design-system/core storybook",
+    "storybook:marketing": "lerna run --stream --scope @lote-design-system/marketing-blocks storybook",
+    "storybook:map": "lerna run --stream --scope @lote-design-system/map-blocks storybook",
+    "storybook:icons": "lerna run --stream --scope @lote-design-system/icons storybook",
+    "storybook:gallery": "lerna run --stream --scope @lote-design-system/gallery-blocks storybook",
+    "deploy:core": "lerna run --stream --scope @lote-design-system/core build-storybook",
+    "deploy:marketing": "lerna run --stream --scope @lote-design-system/marketing-blocks build-storybook",
+    "deploy:map": "lerna run --stream --scope @lote-design-system/map-blocks build-storybook",
+    "deploy:icons": "lerna run --stream --scope @lote-design-system/icons build-storybook",
+    "deploy:gallery": "lerna run --stream --scope @lote-design-system/gallery-blocks build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lotesystem/lote-design-system.git"
+  },
+  "author": "Lotesystem <lotesystem@gmail.com> (https://github.com/lotesystem/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lotesystem/lote-design-system/issues"
+  },
+  "homepage": "https://lotesystem.github.io/chicken#readme",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.8.4",
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+	"babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10.1.0",
+    "babel-jest": "^24.9.0",
+    "commitlint": "8.3.5",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-react-app": "5.2.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "husky": "4.2.3",
+    "jest": "24.9.0",
+    "lerna": "3.20.2",
+    "lint-staged": "10.0.8",
+    "prettier": "^1.19.1",
+	"rimraf": "^3.0.2",
+    "stylelint": "13.3.1",
+    "stylelint-config-recommended": "3.0.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-processor-styled-components": "1.10.0"
+  },
+  "lint-staged": {
+    "*.js": [
+      "stylelint '*.js'"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

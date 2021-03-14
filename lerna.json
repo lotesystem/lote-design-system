@@ -1,0 +1,18 @@
+{
+  "lerna": "3.4.2",
+  "useWorkspaces": true,
+  "npmClient": "yarn",
+  "npmClientArgs": ["--no-lockfile"],
+  "packages": ["packages/*"],
+  "version": "independent",
+  "registry": "https://registry.npmjs.org",
+  "command": {
+    "create": {
+      "homepage": "https://github.com/lotesystem/lote-design-system#readme"
+    },
+    "publish": {
+      "allowBranch": "master",
+      "message": "chore(release): publish"
+    }
+  }
+}
