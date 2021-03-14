@@ -73,7 +73,7 @@ export default function App() {
 
 ## Documentation
 
-- [Storybook](https://lotesystem.github.io/chicken/packages/core/www)
+- [Storybook](https://lotesystem.github.io/lote-design-system/packages/core/www)
 - Detailed docs is coming soon.
 
 ## Motivation

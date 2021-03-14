@@ -40,13 +40,13 @@ For example, if you only want to use core components (**Theme (Default Color sch
 
 Back to the point. The following table will explain to you what is the purpose of each package.
 
-| Package name                                      | Description                                                                                                  | Storybook                            | Installation                                    |
-|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------|--------------------------------------|-------------------------------------------------|
-| [`core`](./packages/core)                         | Main core components comes with Theme, Typography, ColorScheme, GridSystem, Buttons, Pagination & Input etc. | [Demo](https://lotesystem.github.io) | yarn add `@lote-design-system/core`             |
-| [`icons`](./packages/icons)                       | Iconography assets from the design system                                                                    | [Demo](https://lotesystem.github.io) | yarn add `@lote-design-system/icons`            |
-| [`marketing-blocks`](./packages/marketing-blocks) | all the main components used inside the modern Landing pages                                                 | [Demo](https://lotesystem.github.io) | yarn add `@lote-design-system/marketing-blocks` |
-| [`gallery-blocks`](./packages/gallery-blocks)     | helps to create masonry or justified grid of photos                                                          | [Demo](https://lotesystem.github.io) | yarn add `@lote-design-system/gallery-blocks`   |
-| [`map-blocks`](./packages/map-blocks)             | integrate mobile-friendly interactive maps                                                                   | [Demo](https://lotesystem.github.io) | yarn add `@lote-design-system/map-blocks`       |
+| Package name                                      | Description                                                                                                  | Storybook                                                                             | Installation                                    |
+|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|-------------------------------------------------|
+| [`core`](./packages/core)                         | Main core components comes with Theme, Typography, ColorScheme, GridSystem, Buttons, Pagination & Input etc. | [Demo](https://lotesystem.github.io/lote-design-system/packages/core/www)             | yarn add `@lote-design-system/core`             |
+| [`icons`](./packages/icons)                       | Iconography assets from the design system                                                                    | [Demo](https://lotesystem.github.io/lote-design-system/packages/icons/www)            | yarn add `@lote-design-system/icons`            |
+| [`marketing-blocks`](./packages/marketing-blocks) | all the main components used inside the modern Landing pages                                                 | [Demo](https://lotesystem.github.io/lote-design-system/packages/marketing-blocks/www) | yarn add `@lote-design-system/marketing-blocks` |
+| [`gallery-blocks`](./packages/gallery-blocks)     | helps to create masonry or justified grid of photos                                                          | [Demo](https://lotesystem.github.io/lote-design-system/packages/gallery-blocks/www)   | yarn add `@lote-design-system/gallery-blocks`   |
+| [`map-blocks`](./packages/map-blocks)             | integrate mobile-friendly interactive maps                                                                   | [Demo](https://lotesystem.github.io/lote-design-system/packages/map-blocks/www)       | yarn add `@lote-design-system/map-blocks`       |
 
 ## Motivation
 
