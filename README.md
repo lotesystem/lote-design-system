@@ -20,6 +20,7 @@ What it includes?
 ### Some knowledge about `Logo` and word `Lote`
 ***Lote***
 Lote comes from the Lote Tree a location that marks the end of the seventh heaven, the boundary which no creation can pass. It is a symbol of solidarity and determination; it reminds us that the goals of this world are not incompatible with the goals of the spiritual soul.
+
 ***Logo***
 Life is started with the water and water is divided into the ocean. King of the ocean is a whale.
 
