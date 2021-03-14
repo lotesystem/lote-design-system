@@ -35,7 +35,7 @@
   "bugs": {
     "url": "https://github.com/lotesystem/lote-design-system/issues"
   },
-  "homepage": "https://lotesystem.github.io/chicken#readme",
+  "homepage": "https://lotesystem.github.io/lote-design-system#readme",
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
