@@ -14,17 +14,7 @@
     "lint:style": "stylelint 'packages/**/*.js'",
     "pretest": "yarn lint",
     "test:watch": "jest --watch",
-    "test": "jest",
-    "storybook:core": "lerna run --stream --scope @lote-design-system/core storybook",
-    "storybook:marketing": "lerna run --stream --scope @lote-design-system/marketing-blocks storybook",
-    "storybook:map": "lerna run --stream --scope @lote-design-system/map-blocks storybook",
-    "storybook:icons": "lerna run --stream --scope @lote-design-system/icons storybook",
-    "storybook:gallery": "lerna run --stream --scope @lote-design-system/gallery-blocks storybook",
-    "deploy:core": "lerna run --stream --scope @lote-design-system/core build-storybook",
-    "deploy:marketing": "lerna run --stream --scope @lote-design-system/marketing-blocks build-storybook",
-    "deploy:map": "lerna run --stream --scope @lote-design-system/map-blocks build-storybook",
-    "deploy:icons": "lerna run --stream --scope @lote-design-system/icons build-storybook",
-    "deploy:gallery": "lerna run --stream --scope @lote-design-system/gallery-blocks build-storybook"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
