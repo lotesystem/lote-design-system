@@ -49,7 +49,6 @@ module.exports = {
     'no-console': 1,
     'comma-dangle': 2,
     'jsx-quotes': [2, 'prefer-double'],
-    'linebreak-style': ['error', 'unix'],
     quotes: [
       2,
       'single',
