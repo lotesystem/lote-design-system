@@ -55,7 +55,9 @@
     "test:watch": "jest --watch",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
     "storybook": "start-storybook -p 10002 -s public",
-    "build-storybook": "rimraf www && lerna exec \"build-storybook -s public -o www\""
+    "clean:storybook": "rimraf www",
+    "build:storybook": "build-storybook -s public -o www",
+    "deploy": "npm-run-all clean:storybook build:storybook"
   },
   "devDependencies": {
     "@babel/cli": "7.8.4",
