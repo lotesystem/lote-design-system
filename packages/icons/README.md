@@ -9,7 +9,7 @@ npm install @lote-design-system/icons
 ```
 
 ```sh
-import Icon from '@lote-design-system/icons';
+import { Icon } from '@lote-design-system/icons';
 
 export default function App() {
   return (
