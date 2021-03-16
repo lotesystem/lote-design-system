@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-import { StyledIconWrapper } from './styled';
 import icons from './icons';
 
 const Icon = props => {
@@ -26,26 +24,6 @@ Icon.propTypes = {
 
 Icon.defaultProps = {};
 
-const StyledIcon = ({ name, color, size, ...otherProps }) => {
-  const Svg = icons[name];
-
-  return (
-    <StyledIconWrapper {...otherProps} color={color} size={size}>
-      <Svg />
-    </StyledIconWrapper>
-  );
-};
-
-StyledIcon.propTypes = {
-  name: PropTypes.oneOf(Object.keys(icons)).isRequired,
-  size: PropTypes.any,
-  color: PropTypes.string
-};
-
-StyledIcon.defaultProps = {
-  size: 6
-};
-
 export default Icon;
 
-export { Icon, StyledIcon };
+export { Icon };
