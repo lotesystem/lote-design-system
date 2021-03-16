@@ -71,6 +71,91 @@ export default function App() {
 
 ```
 
+### Example with your custom Theme incase if you don't want to use the default Theme:
+
+```js
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import {
+  reset,
+  typography,
+  ThemeProvider,
+  Button
+} from '@lote-design-system/core';
+
+const GlobalStyle = createGlobalStyle`
+  ${reset};
+  ${typography};
+`;
+
+export const theme = {
+
+  // You can define all your color palettes and pass into the theme
+  palettes: {...myPalettes},
+  
+  // Fonts that you can consume on styling
+  fonts: {
+    body: "'Open Sans', sans-serif", 
+    heading: 'inherit', // Same font will also apply to the headings
+  },
+  
+  sizes: [
+    0,
+    16,
+    18,
+    32,
+    50,
+    52,
+    64,
+    128,
+    256,
+    512,
+    576,
+    720,
+    768,
+    992,
+    960,
+    1140,
+    1200,
+    1440,
+    2560,
+  ],
+
+  container: {
+    paddingRight: '32px',
+    paddingLeft: '32px',
+  },
+
+  site: {
+    xpadding: [144, 108, 72],
+    ypadding: [72, 64, 32],
+  },
+  
+  shadowSide: {
+    up:
+      '0 -6px 16px -8px rgba(0, 0, 0, 0.08), 0 -9px 28px 0 rgba(0, 0, 0, 0.05), 0 -12px 48px 16px rgba(0, 0, 0, 0.03)',
+    down:
+      '0 6px 16px -8px rgba(0, 0, 0, 0.08), 0 9px 28px 0 rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03)',
+    left:
+      '-6px 0 16px -8px rgba(0, 0, 0, 0.08), -9px 0 28px 0 rgba(0, 0, 0, 0.05), -12px 0 48px 16px rgba(0, 0, 0, 0.03)',
+    right:
+      '6px 0 16px -8px rgba(0, 0, 0, 0.08), 9px 0 28px 0 rgba(0, 0, 0, 0.05), 12px 0 48px 16px rgba(0, 0, 0, 0.03)',
+  },
+};
+
+
+export default function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Button color="secondary">Hello World</Button>
+      </ThemeProvider>
+    </>
+  );
+}
+```
+
 ## Documentation
 
 - [Storybook](https://lotesystem.github.io/lote-design-system/packages/core/www)
