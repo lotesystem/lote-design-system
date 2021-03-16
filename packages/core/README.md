@@ -71,6 +71,24 @@ export default function App() {
 
 ```
 
+### Example: log default theme that came with the design system:
+```js
+import React from 'react';
+import { theme } from '@lote-design-system/core';
+
+export default function App() {
+  console.log('Theme: ', theme);
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider>
+        <Button color="secondary">Hello World</Button>
+      </ThemeProvider>
+    </>
+  );
+}
+```
+
 ### Example with your custom Theme incase if you don't want to use the default Theme:
 
 ```js
