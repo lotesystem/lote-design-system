@@ -1,7 +1,6 @@
 {
   "name": "lote-design-system",
   "description": "A design system helps to build websites rapidly",
-  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "lerna run prepare --parallel",
