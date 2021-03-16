@@ -21,15 +21,29 @@ const defaultProps = {
 };
 
 const AbstractPaginationItem = props => {
-  const { active, className, children, color, variation, disabled, tag: Tag, ...attributes } = props;
+  const {
+    active,
+    className,
+    children,
+    color,
+    variation,
+    disabled,
+    tag: Tag,
+    ...attributes
+  } = props;
 
-    // Map all children with some new `props` named variation, active & disabled.
-    const clones = React.Children.map(children, child => {
-        if (React.isValidElement(child)) {
-            return React.cloneElement(child, {variation,color,active,disabled});
-        }
-    });
-    return <Tag {...attributes} className={className}> { clones} </Tag>;
+  // Map all children with some new `props` named variation, active & disabled.
+  const clones = React.Children.map(children, child => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, { variation, color, active, disabled });
+    }
+  });
+  return (
+    <Tag {...attributes} className={className}>
+      {' '}
+      {clones}{' '}
+    </Tag>
+  );
 };
 
 AbstractPaginationItem.propTypes = propTypes;

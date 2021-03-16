@@ -1,41 +1,46 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { omit, tagPropType, getGridBreakPointKeys, withoutBreakpointColStyles, makeGridColumns } from './utils';
+import {
+  omit,
+  tagPropType,
+  getGridBreakPointKeys,
+  withoutBreakpointColStyles,
+  makeGridColumns
+} from './utils';
 
 const propTypes = {
-    /** An element type to render as (string or function). */
-    tag: tagPropType,
-    /** Set `gridColumns` width of each column is calculated based on total columns. */
-    gridColumns: PropTypes.number,
-    /** Set `gridGutterWidth` .i.e. left and right padding between the columns. */
-    gridGutterWidth: PropTypes.number,
-    /** Additional classes. */
-    className: PropTypes.string,
+  /** An element type to render as (string or function). */
+  tag: tagPropType,
+  /** Set `gridColumns` width of each column is calculated based on total columns. */
+  gridColumns: PropTypes.number,
+  /** Set `gridGutterWidth` .i.e. left and right padding between the columns. */
+  gridGutterWidth: PropTypes.number,
+  /** Additional classes. */
+  className: PropTypes.string
 };
 
 const defaultProps = {
-    tag: 'div',
+  tag: 'div'
 };
 
-const AbstractColumn = ( props ) => {
+const AbstractColumn = props => {
+  // Destructure properties because we don't want to render these props
+  // on underlying DOM element
+  const {
+    className,
+    gridColumns,
+    gridGutterWidth,
+    tag: Tag,
+    ...attributes
+  } = props;
+  // Remove `styled-system` and other props from the `attributes` object. We don't want to
+  // render these props on the underlying DOM element. But, render on the
+  // styled-component class.
+  const breakpoints = getGridBreakPointKeys();
+  const attr = omit(attributes, breakpoints);
 
-    // Destructure properties because we don't want to render these props
-    // on underlying DOM element
-    let {
-        className,
-        gridColumns,
-        gridGutterWidth,
-        tag: Tag,
-        ...attributes
-    } = props;
-    // Remove `styled-system` and other props from the `attributes` object. We don't want to
-    // render these props on the underlying DOM element. But, render on the
-    // styled-component class.
-    const breakpoints = getGridBreakPointKeys();
-    const attr = omit(attributes, breakpoints);
-
-    return (<Tag {...attr} className={className}/>);
+  return <Tag {...attr} className={className} />;
 };
 
 AbstractColumn.propTypes = propTypes;
@@ -46,25 +51,24 @@ const Column = styled(AbstractColumn)`
   width: 100%;
   ${props => {
     if (props.gridGutterWidth) {
-        const width = props.gridGutterWidth;
-        return {
-            paddingRight: width / 2 + 'px',
-            paddingLeft: width / 2 + 'px'
-        };
+      const width = props.gridGutterWidth;
+      return {
+        paddingRight: width / 2 + 'px',
+        paddingLeft: width / 2 + 'px'
+      };
     } else {
-        return {
-            paddingRight: props.theme.gridGutterWidth / 2 + 'px',
-            paddingLeft: props.theme.gridGutterWidth / 2 + 'px'
-        };
+      return {
+        paddingRight: props.theme.gridGutterWidth / 2 + 'px',
+        paddingLeft: props.theme.gridGutterWidth / 2 + 'px'
+      };
     }
-}};
-  
-    ${withoutBreakpointColStyles};
-    ${makeGridColumns};
+  }};
+
+  ${withoutBreakpointColStyles};
+  ${makeGridColumns};
 `;
 
 Column.propTypes = propTypes;
 Column.defaultProps = defaultProps;
-
 
 export default Column;

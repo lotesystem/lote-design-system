@@ -4,42 +4,40 @@ import PropTypes from 'prop-types';
 import { tagPropType } from './utils';
 
 const propTypes = {
-    /** Primary content. */
-    children: PropTypes.node,
-    row: PropTypes.bool,
-    check: PropTypes.bool,
-    inline: PropTypes.bool,
-    disabled: PropTypes.bool,
-    /** An element type to render as (string or function). */
-    tag: tagPropType,
-    /** Additional classes. */
-    className: PropTypes.string
+  /** Primary content. */
+  children: PropTypes.node,
+  row: PropTypes.bool,
+  check: PropTypes.bool,
+  inline: PropTypes.bool,
+  disabled: PropTypes.bool,
+  /** An element type to render as (string or function). */
+  tag: tagPropType,
+  /** Additional classes. */
+  className: PropTypes.string
 };
 
 const defaultProps = {
-    tag: 'div',
+  tag: 'div'
 };
 
-const AbstractFormGroup = ( props ) => {
+const AbstractFormGroup = props => {
+  // Destructure properties because we don't want to render these props
+  // on underlying DOM element
+  const {
+    className,
+    row,
+    disabled,
+    check,
+    inline,
+    tag: Tag,
+    ...attributes
+  } = props;
 
-    // Destructure properties because we don't want to render these props
-    // on underlying DOM element
-    let {
-        className,
-        row,
-        disabled,
-        check,
-        inline,
-        tag: Tag,
-        ...attributes
-    } = props;
+  if (Tag === 'fieldset') {
+    attributes.disabled = disabled;
+  }
 
-    if (Tag === 'fieldset') {
-        attributes.disabled = disabled;
-    }
-
-
-    return (<Tag {...attributes} className={className}/>);
+  return <Tag {...attributes} className={className} />;
 };
 
 AbstractFormGroup.propTypes = propTypes;
@@ -86,6 +84,5 @@ const FormGroup = styled(AbstractFormGroup)`
 
 FormGroup.propTypes = propTypes;
 FormGroup.defaultProps = defaultProps;
-
 
 export default FormGroup;

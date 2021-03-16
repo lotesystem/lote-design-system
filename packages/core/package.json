@@ -1,6 +1,6 @@
 {
   "name": "@lote-design-system/core",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "core components",
   "main": "main/index.js",
   "module": "module/index.js",
@@ -42,8 +42,8 @@
     "npm": ">=5.10.0 || >=6.0.0"
   },
   "scripts": {
-    "build:main": "cross-env BABEL_ENV=production babel src --out-dir main --delete-dir-on-start",
-    "build:module": "cross-env MODULE=true babel src --out-dir module --delete-dir-on-start",
+    "build:main": "cross-env BABEL_ENV=production babel src --ignore './src/stories' --out-dir main --delete-dir-on-start",
+    "build:module": "cross-env MODULE=true babel src --ignore './src/stories' --out-dir module --delete-dir-on-start",
     "build": "npm run build:module && npm run build:main",
     "prepare": "npm run build",
     "lint": "npm run lint:js && npm run lint:style",
@@ -99,9 +99,10 @@
     "@babel/runtime": "^7.4.2",
     "@styled-system/should-forward-prop": "^5.1.5",
     "@styled-system/theme-get": "^5.1.2",
+    "polished": "^4.1.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "rimraf": "^3.0.2",
     "styled-components": "^5.1.1",
     "styled-system": "^5.1.5"
   },

@@ -7,78 +7,77 @@ import InputGroupText from './InputGroupText';
 import InputGroupAddon from './InputGroupAddon';
 import { tagPropType, InputLg, InputSm } from './utils';
 
-
 const propTypes = {
-    /** An element type to render as (string or function). */
-    tag: tagPropType,
-    /** An InputGroup can have different sizes. */
-    size: PropTypes.oneOf(['sm', 'md','lg']),
-    /** Additional classes. */
-    className: PropTypes.string
+  /** An element type to render as (string or function). */
+  tag: tagPropType,
+  /** An InputGroup can have different sizes. */
+  size: PropTypes.oneOf(['sm', 'md', 'lg']),
+  /** Additional classes. */
+  className: PropTypes.string
 };
 
 const defaultProps = {
-    tag: 'div'
+  tag: 'div'
 };
 
-const AbstractInputGroup = (props) => {
-    const {
-        className,
-        tag: Tag,
-        size,
-        ...attributes
-    } = props;
+const AbstractInputGroup = props => {
+  const { className, tag: Tag, size, ...attributes } = props;
 
-    return (
-        <Tag {...attributes} className={className} />
-    );
+  return <Tag {...attributes} className={className} />;
 };
 
 AbstractInputGroup.propTypes = propTypes;
 AbstractInputGroup.defaultProps = defaultProps;
 
-
 /**
  * @param props {Object}
  * @return {string[]}
  */
-const size = (props) => {
-    switch (props.size) {
-        case 'lg':
-            return css`
-            & > ${Input}:not(textarea) {
-               height: ${InputLg.height};
-            }
-            & > ${Input},
-            & > ${InputGroupAddon} > ${InputGroupText},
-            & > ${InputGroupAddon} > ${Button} {
-              padding: ${InputLg.padding};
-              font-size: ${InputLg.fontSize};
-              line-height: ${InputLg.lineHeight};
-              border-radius: ${InputLg.borderRadius};
-            }
-          `;
-        case 'sm':
-            return css`
-            & > ${Input}:not(textarea) {
-               height: ${InputSm.height};
-            }
-            & > ${Input},
-            & > ${InputGroupAddon} > ${InputGroupText},
-            & > ${InputGroupAddon} > ${Button} {
-              padding: ${InputSm.padding};
-              font-size: ${InputSm.fontSize};
-              line-height: ${InputSm.lineHeight};
-              border-radius: ${InputSm.borderRadius};
-            }
-          `;
+const size = props => {
+  switch (props.size) {
+    case 'lg':
+      return css`
+        & > ${Input}:not(textarea) {
+          height: ${InputLg.height};
+        }
+        &
+          > ${Input},
+          &
+          > ${InputGroupAddon}
+          > ${InputGroupText},
+          &
+          > ${InputGroupAddon}
+          > ${Button} {
+          padding: ${InputLg.padding};
+          font-size: ${InputLg.fontSize};
+          line-height: ${InputLg.lineHeight};
+          border-radius: ${InputLg.borderRadius};
+        }
+      `;
+    case 'sm':
+      return css`
+        & > ${Input}:not(textarea) {
+          height: ${InputSm.height};
+        }
+        &
+          > ${Input},
+          &
+          > ${InputGroupAddon}
+          > ${InputGroupText},
+          &
+          > ${InputGroupAddon}
+          > ${Button} {
+          padding: ${InputSm.padding};
+          font-size: ${InputSm.fontSize};
+          line-height: ${InputSm.lineHeight};
+          border-radius: ${InputSm.borderRadius};
+        }
+      `;
 
-
-        default:
-            return css``;
-    }
+    default:
+      return css``;
+  }
 };
-
 
 const InputGroup = styled(AbstractInputGroup)`
 
@@ -107,13 +106,17 @@ const InputGroup = styled(AbstractInputGroup)`
       z-index: 3;
   }
   
-   ${'' /* Applied When the Input is not the last child of the parent element InputGroup. */}
+   ${
+     '' /* Applied When the Input is not the last child of the parent element InputGroup. */
+   }
   & > ${Input}:not(:last-child) {
      border-top-right-radius: 0;
      border-bottom-right-radius: 0;
   }
   
-   ${'' /* Applied When the Input is not the first child of the parent element InputGroup. */}
+   ${
+     '' /* Applied When the Input is not the first child of the parent element InputGroup. */
+   }
   & > ${Input}:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;

@@ -30,4 +30,3 @@ export { getPaletteColor } from './utils';
 
 export * from './hooks';
 export * from './theme';
-

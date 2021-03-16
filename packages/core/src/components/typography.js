@@ -12,7 +12,7 @@ const typography = () => {
       font-weight: 500;
       line-height: 1.2;
     }
-    
+
     h1 {
       font-size: 2.5rem;
     }
@@ -32,7 +32,7 @@ const typography = () => {
     h5 {
       font-size: 1.25rem;
     }
-   
+
     h6 {
       font-size: 1rem;
     }

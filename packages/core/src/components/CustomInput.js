@@ -56,7 +56,7 @@ const Check = props => {
 };
 
 const AbstractCustomInput = props => {
-  let {
+  const {
     inputSize,
     htmlFor,
     label,

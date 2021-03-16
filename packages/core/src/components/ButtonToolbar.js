@@ -4,24 +4,18 @@ import PropTypes from 'prop-types';
 import { tagPropType } from './utils';
 
 const propTypes = {
-    tag: tagPropType,
-    className: PropTypes.string,
+  tag: tagPropType,
+  className: PropTypes.string
 };
 
 const defaultProps = {
-    tag: 'div',
+  tag: 'div'
 };
 
-const AbstractButtonToolbar = (props) => {
-    const {
-        className,
-        tag: Tag,
-        ...attributes
-    } = props;
+const AbstractButtonToolbar = props => {
+  const { className, tag: Tag, ...attributes } = props;
 
-    return (
-        <Tag {...attributes} className={className} />
-    );
+  return <Tag {...attributes} className={className} />;
 };
 
 AbstractButtonToolbar.propTypes = propTypes;
@@ -35,6 +29,5 @@ const ButtonToolbar = styled(AbstractButtonToolbar)`
 
 ButtonToolbar.propTypes = propTypes;
 ButtonToolbar.defaultProps = defaultProps;
-
 
 export default ButtonToolbar;

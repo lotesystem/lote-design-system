@@ -3,50 +3,47 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { omit, tagPropType, getGridBreakPointKeys, percentage } from './utils';
 
-
 const propTypes = {
-    /** Primary content. */
-    children: PropTypes.node,
-    hidden: PropTypes.bool,
-    check: PropTypes.bool,
-    labelSize: PropTypes.oneOf(['sm', 'md', 'lg']),
-    for: PropTypes.string,
-    /** An element type to render as (string or function). */
-    tag: tagPropType,
-    /** Additional classes. */
-    className: PropTypes.string
+  /** Primary content. */
+  children: PropTypes.node,
+  hidden: PropTypes.bool,
+  check: PropTypes.bool,
+  labelSize: PropTypes.oneOf(['sm', 'md', 'lg']),
+  for: PropTypes.string,
+  /** An element type to render as (string or function). */
+  tag: tagPropType,
+  /** Additional classes. */
+  className: PropTypes.string
 };
 
 const defaultProps = {
-    tag: 'label',
+  tag: 'label'
 };
 
-const AbstractLabel = ( props ) => {
+const AbstractLabel = props => {
+  // Destructure properties because we don't want to render these props
+  // on underlying DOM element
+  const {
+    className,
+    hidden,
+    check,
+    labelSize,
+    for: htmlFor,
+    tag: Tag,
+    ...attributes
+  } = props;
 
-    // Destructure properties because we don't want to render these props
-    // on underlying DOM element
-    let {
-        className,
-        hidden,
-        check,
-        labelSize,
-        for: htmlFor,
-        tag: Tag,
-        ...attributes
-    } = props;
+  // Remove `styled-system` and other props from the `attributes` object. We don't want to
+  // render these props on the underlying DOM element. But, render on the
+  // styled-component class.
+  const breakpoints = getGridBreakPointKeys();
+  const attr = omit(attributes, breakpoints);
 
-    // Remove `styled-system` and other props from the `attributes` object. We don't want to
-    // render these props on the underlying DOM element. But, render on the
-    // styled-component class.
-    const breakpoints = getGridBreakPointKeys();
-    const attr = omit(attributes, breakpoints);
-
-    return (<Tag htmlFor={htmlFor} {...attr} className={className}/>);
+  return <Tag htmlFor={htmlFor} {...attr} className={className} />;
 };
 
 AbstractLabel.propTypes = propTypes;
 AbstractLabel.defaultProps = defaultProps;
-
 
 const breakpoints = getGridBreakPointKeys();
 
@@ -54,58 +51,56 @@ const breakpoints = getGridBreakPointKeys();
  * @param props {Object}
  * @return {string[]}
  */
-const labelSize = (props) => {
-
-    switch (props.labelSize) {
-        case 'lg':
-            return css`
-                & {
-                  padding-top: calc(0.5rem + 1px); /* 0.5rem = 8px */
-                  padding-bottom: calc(0.5rem + 1px);
-                  margin-bottom: 0;
-                  font-size: 20px;
-                  line-height: 1.5;
-                }
-            `;
-        case 'sm':
-            return css`
-                & {
-                  padding-top: calc(0.25rem + 1px); /* 0.25rem = 4px */
-                  padding-bottom: calc(0.25rem + 1px);
-                  margin-bottom: 0;
-                  font-size: 14px;
-                  line-height: 1.5;
-                }
-            `;
-        case 'md':
-            return css`
-                & {
-                  padding-top: calc(0.375rem + 1px); /* 0.375rem = 6px */
-                  padding-bottom: calc(0.375rem + 1px);
-                  margin-bottom: 0;
-                  font-size: inherit;
-                  line-height: 1.5;
-                }
-            `;
-        default:
-            return css``;
-    }
+const labelSize = props => {
+  switch (props.labelSize) {
+    case 'lg':
+      return css`
+        & {
+          padding-top: calc(0.5rem + 1px); /* 0.5rem = 8px */
+          padding-bottom: calc(0.5rem + 1px);
+          margin-bottom: 0;
+          font-size: 20px;
+          line-height: 1.5;
+        }
+      `;
+    case 'sm':
+      return css`
+        & {
+          padding-top: calc(0.25rem + 1px); /* 0.25rem = 4px */
+          padding-bottom: calc(0.25rem + 1px);
+          margin-bottom: 0;
+          font-size: 14px;
+          line-height: 1.5;
+        }
+      `;
+    case 'md':
+      return css`
+        & {
+          padding-top: calc(0.375rem + 1px); /* 0.375rem = 6px */
+          padding-bottom: calc(0.375rem + 1px);
+          margin-bottom: 0;
+          font-size: inherit;
+          line-height: 1.5;
+        }
+      `;
+    default:
+      return css``;
+  }
 };
 
 /**
  * @param gridGutterWidth
  * @return {string[]}
  */
-const defaultColumnStyles = ({theme: { gridGutterWidth } }) => {
-    return css`
-            & {
-               position: relative;
-               width: 100%;
-               padding-right: ${gridGutterWidth / 2}px;
-               padding-left:  ${gridGutterWidth / 2}px;
-            }
-          `;
-
+const defaultColumnStyles = ({ theme: { gridGutterWidth } }) => {
+  return css`
+    & {
+      position: relative;
+      width: 100%;
+      padding-right: ${gridGutterWidth / 2}px;
+      padding-left: ${gridGutterWidth / 2}px;
+    }
+  `;
 };
 
 /**
@@ -115,10 +110,10 @@ const defaultColumnStyles = ({theme: { gridGutterWidth } }) => {
  * @returns {string[]}
  */
 const sizeForIndividualColumn = (size, propAsColumns) => {
-      return css`
-      flex: 0 0 ${percentage(size / propAsColumns)};
-      max-width: ${percentage(size / propAsColumns)};
-    `;
+  return css`
+    flex: 0 0 ${percentage(size / propAsColumns)};
+    max-width: ${percentage(size / propAsColumns)};
+  `;
 };
 
 /**
@@ -127,22 +122,33 @@ const sizeForIndividualColumn = (size, propAsColumns) => {
  * @param props {Object}
  * @return {string[]}
  */
-const makeGridColumns = ({theme: { gridColumns, gridBreakPoints }, ...props}) => {
-    // CSS Generator
-    let mediaQueryCSS =  breakpoints.map((key) => {
-        let mediaQuery = gridBreakPoints[key];
-        if (props[key]) {
-            // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { }`
-            if (mediaQuery === 0) {
-                return css`${sizeForIndividualColumn(props[key], gridColumns)}`;
-            } else {
-                return css` @media (min-width: ${mediaQuery}) {${sizeForIndividualColumn(props[key], gridColumns)};}`;
-            }
-        } else {
-            return css``;
-        }
-    });
-    return css`${mediaQueryCSS}`;
+const makeGridColumns = ({
+  theme: { gridColumns, gridBreakPoints },
+  ...props
+}) => {
+  // CSS Generator
+  const mediaQueryCSS = breakpoints.map(key => {
+    const mediaQuery = gridBreakPoints[key];
+    if (props[key]) {
+      // No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { }`
+      if (mediaQuery === 0) {
+        return css`
+          ${sizeForIndividualColumn(props[key], gridColumns)}
+        `;
+      } else {
+        return css`
+          @media (min-width: ${mediaQuery}) {
+            ${sizeForIndividualColumn(props[key], gridColumns)};
+          }
+        `;
+      }
+    } else {
+      return css``;
+    }
+  });
+  return css`
+    ${mediaQueryCSS}
+  `;
 };
 
 const colStyles = props => {
@@ -200,6 +206,5 @@ const Label = styled(AbstractLabel)`
 
 Label.propTypes = propTypes;
 Label.defaultProps = defaultProps;
-
 
 export default Label;
