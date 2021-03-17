@@ -106,7 +106,7 @@ const GlobalStyle = createGlobalStyle`
   ${typography};
 `;
 
-export const theme = {
+const theme = {
 
   // You can define all your color palettes and pass into the theme
   palettes: {...myPalettes},
