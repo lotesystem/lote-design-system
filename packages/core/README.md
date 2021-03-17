@@ -89,6 +89,44 @@ export default function App() {
 }
 ```
 
+You can see what properties `theme` object contains:
+
+```js
+ThemeProvider.propTypes = {
+  /** The theme to drive the look and feel */
+  theme: PropTypes.shape({
+    breakpoints: PropTypes.arrayOf(PropTypes.string),
+    mediaQueries: PropTypes.arrayOf(PropTypes.string),
+    gridBreakPoints: PropTypes.object,
+    containerMaxWidths: PropTypes.object,
+    gridColumns: PropTypes.number,
+    gridGutterWidth: PropTypes.number,
+    space: PropTypes.arrayOf(PropTypes.number),
+    font: PropTypes.string,
+    fontSizes: PropTypes.arrayOf(PropTypes.number),
+    fontWeights: PropTypes.shape({
+      regular: PropTypes.number,
+      medium: PropTypes.number,
+      bold: PropTypes.number
+    }),
+    lineHeights: PropTypes.shape({
+      standard: PropTypes.number,
+      display: PropTypes.number
+    }),
+    letterSpacings: PropTypes.shape({
+      normal: PropTypes.string,
+      caps: PropTypes.string
+    }),
+    colors: PropTypes.object,
+    palette: PropTypes.object,
+    radii: PropTypes.arrayOf(PropTypes.number),
+    radius: PropTypes.string,
+    boxShadows: PropTypes.arrayOf(PropTypes.string),
+    maxContainerWidth: PropTypes.string
+  })
+};
+```
+
 ### Example with your custom Theme incase if you don't want to use the default Theme:
 
 ```js
