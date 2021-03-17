@@ -53,6 +53,76 @@ Back to the point. The following table will explain to you what is the purpose o
 
 Initially, the purpose of this design system is to create any kind of website that we see in our normal life, such as. (Marketing / Agency Website), (Ecommerce Website) and Admin Dashboard. Therefore, the main purpose is to save the developer's time and create a complete set of components so that the developer does not have any difficulty in creating such a website.
 
+## Note
+
+You can use the whole design system without installing all other packages. But remember the whole design-system is written with the [Css-In-Js](https://reactjs.org/docs/faq-styling.html#what-is-css-in-js) approach. It is necessary to import `ThemeProvider` and `theme`, if you want to consume `components` & `blocks` inside your website.
+
+Either you can take `ThemeProvider` from external [Css-In-Js](https://reactjs.org/docs/faq-styling.html#what-is-css-in-js) library like [styled-components](https://styled-components.com/docs/api#themeprovider) or you can import this from our `core` package which also comes with the predefined `theme`.
+
+## Tip #1
+To use this design-system with an enhanced experience, I highly recommend using browser defaults and typography from our `core` package.
+
+```js
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import {
+  reset,
+  typography,
+  ThemeProvider,
+  Button
+} from '@lote-design-system/core';
+
+const GlobalStyle = createGlobalStyle`
+  ${reset};
+  ${typography};
+`;
+
+export default function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider>
+        <Button color="secondary">Hello World</Button>
+      </ThemeProvider>
+    </>
+  );
+}
+```
+
+## Tip #2
+
+`If we want to use marketing blocks on our website, we need to import special theme!`
+
+`marketing blocks` are dependent upon the special `theme` which is crafted only for `marketing blocks`. To use `marketing-blocks` properly please take this example seriously.
+
+```js
+import React from 'react';
+import { createGlobalStyle } from 'styled-components';
+import {
+  reset,
+  typography,
+  ThemeProvider,
+  Button
+} from '@lote-design-system/core';
+import { theme } from '@lote-design-system/marketing-blocks';
+
+const GlobalStyle = createGlobalStyle`
+  ${reset};
+  ${typography};
+`;
+
+export default function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Button color="secondary">Hello World</Button>
+      </ThemeProvider>
+    </>
+  );
+}
+```
+
 ## Goals
 
 The core goals of this project are to:
