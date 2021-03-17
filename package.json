@@ -3,6 +3,7 @@
   "description": "A design system helps to build websites rapidly",
   "private": true,
   "scripts": {
+    "prepare": "lerna run prepare --parallel",
     "build": "lerna run prepare --parallel",
     "bootstrap": "lerna bootstrap --use-workspaces",
     "release": "lerna publish",
