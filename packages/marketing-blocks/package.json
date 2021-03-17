@@ -1,0 +1,118 @@
+{
+  "name": "@lote-design-system/marketing-blocks",
+  "version": "1.0.0",
+  "description": "marketing blocks",
+  "main": "main/index.js",
+  "module": "module/index.js",
+  "directories": {
+    "lib": "src",
+    "test": "__tests__"
+  },
+  "files": [
+    "main",
+    "module"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lotesystem/lote-design-system.git"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "theme",
+    "styled-components",
+    "reactjs",
+    "css-in-js",
+    "monorepo",
+    "storybook",
+    "component-library",
+    "icon-set",
+    "grid-system",
+    "design-system",
+    "lerna-monorepo"
+  ],
+  "author": "Lotesystem <lotesystem@gmail.com> (https://github.com/lotesystem/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lotesystem/lote-design-system/issues"
+  },
+  "homepage": "https://lotesystem.github.io/lote-design-system/packages/marketing-blocks/www",
+  "engines": {
+    "node": ">=8.0.0 <9.0.0 || >=10.0.0",
+    "npm": ">=5.10.0 || >=6.0.0"
+  },
+  "scripts": {
+    "build:main": "cross-env BABEL_ENV=production babel src --ignore './src/stories' --out-dir main --delete-dir-on-start",
+    "build:module": "cross-env MODULE=true babel src --ignore './src/stories' --out-dir module --delete-dir-on-start",
+    "build": "npm run build:module && npm run build:main",
+    "prepare": "npm run build",
+    "lint": "npm run lint:js && npm run lint:style",
+    "lint:js": "eslint src --ext .js",
+    "lint:fix": "eslint src --fix",
+    "lint:style": "stylelint 'src/**/*.js'",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
+    "storybook": "start-storybook -p 10004 -s public",
+    "clean:storybook": "rimraf www",
+    "build:storybook": "build-storybook -s public -o www",
+    "deploy": "npm-run-all clean:storybook build:storybook"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.8.4",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-export-default-from": "7.8.3",
+    "@babel/plugin-proposal-object-rest-spread": "7.9.6",
+    "@babel/plugin-transform-runtime": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-react": "7.9.4",
+    "@storybook/addon-actions": "5.3.14",
+    "@storybook/addon-knobs": "5.3.14",
+    "@storybook/addon-links": "5.3.14",
+    "@storybook/addon-storyshots": "5.3.14",
+    "@storybook/addon-viewport": "5.3.14",
+    "@storybook/addons": "5.3.14",
+    "@storybook/react": "5.3.14",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "10.0.3",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-inline-react-svg": "1.1.1",
+    "babel-plugin-macros": "2.8.0",
+    "babel-plugin-styled-components": "1.10.7",
+    "cross-env": "^7.0.2",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-react-app": "5.2.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "4.0.0",
+    "jest": "^25.1.0",
+    "prettier": "^1.19.1",
+    "regenerator-runtime": "^0.13.2",
+    "stylelint": "13.3.1",
+    "stylelint-config-recommended": "3.0.0",
+    "stylelint-config-styled-components": "0.1.1",
+    "stylelint-processor-styled-components": "1.10.0"
+  },
+  "dependencies": {
+    "@ant-design/colors": "4.0.0",
+    "@babel/runtime": "^7.4.2",
+    "@lote-design-system/core": "^1.0.1",
+    "@lote-design-system/icons": "^1.0.1",
+    "lodash": "^4.17.15",
+    "polished": "^3.4.4",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-transition-group": "^4.4.1",
+    "styled-components": "^5.1.1",
+    "styled-media-query": "^2.1.2",
+    "styled-system": "^5.1.5"
+  },
+  "peerDependencies": {
+    "react": ">=16.3.0",
+    "react-dom": ">=16.3.0",
+    "styled-components": ">=3"
+  }
+}
