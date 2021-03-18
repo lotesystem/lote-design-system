@@ -138,7 +138,7 @@ We hope to accomplish these goals by:
 - Reducing the amount of code duplication in our apps
 - Providing easy-to-use and extensible components for anyone to consume.
 
-## Usecases
+## Examples
 [Webincubator](https://www.webincubator.io/)
 
 
