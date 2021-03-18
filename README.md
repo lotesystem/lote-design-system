@@ -139,7 +139,7 @@ We hope to accomplish these goals by:
 - Providing easy-to-use and extensible components for anyone to consume.
 
 ## Examples
-[Webincubator](https://www.webincubator.io/)
+[Incubator](https://www.webincubator.io/)
 
 
 ## Contributing
